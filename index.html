@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <title>Kalkulator spadku przychodów</title>
+
+    <meta
+      name="description"
+      content="kalkulator spadku przychodów do tarczy antykryzysowej"
+    />
+    <meta
+      name="keywords"
+      content="kalkulator spadku przychodów do tarczy antykryzysowej"
+    />
+    <meta name="author" content="TomekART" />
+
+    <meta http-equiv="X-Ua-Compatible" content="IE=edge,chrome=1" />
+
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div id="container">
+      <h1>KALKULATOR SPADKU PRZYCHODÓW</h1>
+      <h2>
+        Do kalkulatora wpisz swoje przychody w odpowiadających sobie miesiącach
+        2019 i 2020 roku. Po wciśnięciu przycisku zobaczysz swój spadek
+        przychodów.
+      </h2>
+      <h3>
+        Aplikację stworzyłem na własny użytek, jako pomoc do wniosków o "Tarczę
+        Antykryzysową". <br />
+        Nie biorę odpowiedzialności za prawidłowość jej działania.
+      </h3>
+      <input type="text" id="old" value="tu wpisz przychód 2019" />
+      <br />
+      <input type="text" id="new" value="tu wpisz przychód 2020" />
+      <br />
+      <input
+        type="submit"
+        value="oblicz spadek przychodów"
+        onclick="calculateDecrease()"
+      />
+      <br /><br />
+
+      <div id="score"></div>
+    </div>
+
+    <script>
+      function calculateDecrease() {
+        const oldTurnover = parseInt(document.getElementById("old").value);
+        const newTurnover = parseInt(document.getElementById("new").value);
+        const result = ((newTurnover - oldTurnover) / oldTurnover) * 100;
+        const resultFixed = Math.abs(result.toFixed(2));
+
+        if (result > 0) {
+          document.getElementById("score").innerHTML =
+            "Nie masz spadku przychodów";
+        } else if (oldTurnover >= 0 && newTurnover >= 0) {
+          document.getElementById("score").innerHTML =
+            "spadek Twoich przychodów to " + resultFixed + "%";
+        } else {
+          document.getElementById("score").innerHTML =
+            "Sprawdź, czy w pola wpisałeś liczby";
+        }
+      }
+    </script>
+  </body>
+</html>
