@@ -40,7 +40,7 @@
         value="oblicz spadek przychodów"
         onclick="calculateDecrease()"
       />
-      <br /><br />
+      <br />
 
       <div id="score"></div>
     </div>
@@ -53,6 +53,9 @@
         const resultFixed = Math.abs(result.toFixed(2));
 
         if (result > 0) {
+          document.getElementById("score").innerHTML =
+            "Nie masz spadku przychodów";
+        } else if (oldTurnover == 0 && newTurnover == 0) {
           document.getElementById("score").innerHTML =
             "Nie masz spadku przychodów";
         } else if (oldTurnover >= 0 && newTurnover >= 0) {
