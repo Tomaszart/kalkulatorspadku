@@ -25,9 +25,17 @@ body {
   padding: 40px;
   width: 210px;
   height: 420px;
+
 }
 
 input {
-  width: 190px;
+  box-sizing: border-box;
+  width: 200px;
   margin-top: 3px;
+  border-radius: 5px 5px 5px 5px;
+  border: 1px solid gray;
+}
+
+input[type="submit"]:hover {
+  border: 1px solid white;
 }
